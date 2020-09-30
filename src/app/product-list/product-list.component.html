@@ -1,0 +1,48 @@
+<html>
+
+<body>
+
+        <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        </head>
+        <div>
+                <div style="float: left;margin-left: 10px;">
+                        <input type="text" placeholder="search"  [(ngModel)]="searchText">
+                </div>
+                <a style="float: right" class="btn primary-btn" routerLink="/shopping-cart"><img
+                                src="../../assets/16757-200.png"></a>
+                <div class="clear"></div>
+        </div>
+        <div class="container-fluid">
+                <div class="row my-row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12"
+                                *ngFor="let product of products | filter:searchText;let i = index"
+                                style="border: 1px solid lightgray; height:350px; text-align: center">
+                                <img src="{{product.image_url}}" height="200px" width="50%">
+                                <h3><b>Title:</b>{{product.name}}</h3>
+                                <h3><b>Price:</b>{{product.price}}$</h3>
+
+                                <button *ngIf="product.quantity == undefined || product.quantity == 0"
+                                        class="btn btn-primary" (click)="addToCart(product,i)"> Add to Cart </button>
+
+                                <div *ngIf="product.quantity > 0" class="quantity-button">
+                                        <div class="minus">
+                                                <span (click)="removeCart(product,i)">-</span>
+                                        </div>
+                                        <div class="text">{{product.quantity}}</div>
+                                        <div class="plus">
+                                                <span (click)="addToCart(product,i)">+</span>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+</body>
+
+</html>

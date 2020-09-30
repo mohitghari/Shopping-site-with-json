@@ -1,0 +1,55 @@
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<h2 *ngIf="cartProducts.length == 0" style="text-align: center"> Empty Shopping cart </h2>
+
+<body *ngIf="cartProducts.length > 0">
+
+
+    <li class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12" *ngFor="let product of cartProducts;let i = index"
+        style="border: 1px solid lightgray; height:auto; width: 100% ; list-style-type: none">
+        <div class="img-div">
+            <img src="{{product.image_url}}" height="200px">
+        </div>
+        <div class="description1">
+            <h3><b>Title:</b>{{product.name}}</h3>
+            <h3><b>Price:</b>{{product.price}}$</h3>
+            <h3><b>Quantity:</b>{{product.quantity}}</h3>
+        </div>
+        <div class="description2">
+            <h3><b> Total:</b>{{ product.price *  product.quantity }}$</h3>
+        </div>
+        <div class="clear"></div>
+    </li>
+
+    <div style="width: 100%; ">
+        <h3 style="float: right;margin-right: 10px;"><b> Total:</b>{{overalltotal}}$</h3>
+    </div>
+    <div class="clear"></div>
+    <div style="text-align: center; border-top: 1px solid lightgray">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <input type="checkbox" formControlName="terms" required />Terms and Condition<br>
+            <div *ngIf="submitted && f.terms.errors">
+                <div *ngIf="f.terms.errors.required">Plz aggree terms n Conditions</div>
+            </div>
+            <div *ngIf="alert">
+                You cant placed order of zero payment
+            </div>
+            <button type="submit" class="btn btn-primary">Pay {{overalltotal}}$</button>
+        </form>
+    </div>
+
+
+
+
+</body>
+
+</html>

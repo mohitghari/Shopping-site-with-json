@@ -1,0 +1,27 @@
+.clear{
+    clear: both;
+}
+
+.quantity-button{
+    width: 83px;
+    border: 1px solid;
+    border-radius: 10px;
+    display: flex;
+    margin:auto
+}
+
+.quantity-button .minus{
+    width: 29%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.quantity-button .text{
+    width: 70%;
+    text-align: center
+}
+.quantity-button .plus{
+    width: 36%;
+    cursor: pointer;
+    text-align: center;
+}

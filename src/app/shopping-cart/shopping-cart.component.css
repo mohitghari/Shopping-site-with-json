@@ -1,0 +1,16 @@
+.img-div{
+    width: 30%;
+    float: left;
+}
+.description1{
+    width: 40%;
+    float: left;
+}
+.description2{
+    width: 30%;
+    float: left;
+}
+
+.clear{
+    clear: both;
+}
